@@ -33,17 +33,21 @@
                             @foreach (var review in space.Reviews)
                             {
                                 <li class="mb-2">
-                                    @review.ReviewText
-                                    <span style="color: #F5B301; margin-left: 5px;">
+                                    <span style="color: #F5B301; margin-right: 5px;">
                                         @for (int i = 0; i < review.ReviewScore; i++)
                                         {
                                             @:★
                                         }
                                     </span>
+                                    @review.ReviewText
+                                    <br />
+                                    <small class="text-muted">
+                                        @review.Date.ToString("dd MMM yyyy")
+                                    </small>
                                 </li>
                             }
                         </ul>
-                    }
+                }
                     else
                     {
                         <p class="text-muted">No reviews yet</p>

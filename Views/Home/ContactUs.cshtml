@@ -2,6 +2,14 @@
     ViewData["Title"] = "Contact Us";
 }
 
-<h1>Contact Us</h1>
+<div class="mx-auto" style="max-width: 600px;">
+    <h1 class="mb-4">Contact Us</h1>
 
-<p>You can reach us at: <strong>@ViewBag.Email</strong></p>
+    <p class="lead">
+        We'd love to hear from you. Whether you have a question, feedback, or just want to say hello, you can reach us at:
+    </p>
+
+    <div class="p-3 mt-3 border rounded bg-light">
+        <strong>Email:</strong> @ViewBag.Email
+    </div>
+</div>

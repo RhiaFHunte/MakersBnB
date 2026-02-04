@@ -2,15 +2,34 @@
     ViewData["Title"] = "Our Team";
 }
 
-    <div class="text-center">
-        <h1 class="display-4">Meet the Team</h1>
-        <ul>
-        @{
-            string[] team = new string[4] {"Rhia", "Ikea","Bia", "Freya"};
+<div class="mx-auto text-center" style="max-width: 600px;">
+    <h1 class="display-4 mb-4">Meet the Team</h1>
 
-            foreach(string person in team) {
-            <article>@person</article>
+    <p class="lead mb-4">
+        The wonderful humans behind MakersBnB:
+    </p>
+
+    <ul class="list-unstyled d-flex flex-column align-items-center gap-3">
+        @{
+            string[] team = new string[] { "Rhia", "Ikea", "Bia", "Freya" };
+
+            foreach (string person in team)
+            {
+                <li>
+                    <div class="d-flex align-items-center gap-3 p-2 border rounded bg-light"
+                        style="width: fit-content; min-width: 180px;">
+                        
+                        <!-- Circle profile icon -->
+                        <div class="rounded-circle bg-secondary d-flex justify-content-center align-items-center"
+                        style="width: 40px; height: 40px; color: white; font-weight: bold;">
+                            @person[0]   <!-- First letter of the name -->
+                        </div>
+
+                        <!-- Name -->
+                        <span>@person</span>
+                    </div>
+                </li>
             }
         }
-        </ul>
-    </div>
+    </ul>
+</div>

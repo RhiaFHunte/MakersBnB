@@ -11,5 +11,7 @@ public class MakersBnBDbContext : DbContext
 
     public DbSet<Space> Spaces { get; set; } = null!;
     public DbSet<Review> Reviews { get; set; } = null!;
+    public DbSet<User> Users { get; set; } = null!;
+
 
 }

@@ -8,6 +8,7 @@ public class Review
         public int Id {get; set;}
         public string? ReviewText {get; set;}
         public int? ReviewScore {get; set;}
+        public int SpaceId { get; set;}
 
         public Review(int id, string reviewtext, int reviewscore)
         {

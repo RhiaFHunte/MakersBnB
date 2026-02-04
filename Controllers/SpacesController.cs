@@ -16,12 +16,18 @@ public class SpacesController : Controller
 
     public IActionResult Index()
     {
-
         var spaces = _context.Spaces.ToList();
 
-        return View(spaces);
+        foreach (var space in spaces)
+        {
+            space.Reviews = _context.Reviews
+                .Where(r => r.SpaceId == space.Id)
+                .ToList();
+        }
 
+        return View(spaces);
     }
+
 
     public IActionResult New()
     {

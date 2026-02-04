@@ -35,6 +35,9 @@ namespace MakersBnB.Migrations
                     b.Property<string>("ReviewText")
                         .HasColumnType("text");
 
+                    b.Property<int>("SpaceId")
+                        .HasColumnType("integer");
+
                     b.HasKey("Id");
 
                     b.ToTable("Reviews");

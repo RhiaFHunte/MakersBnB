@@ -8,6 +8,7 @@
     <h1>Spaces</h1>
     <a href="/Spaces/New" class="btn btn-success">Add New Space</a>
 </div>
+
 <p>This is the Spaces page.</p>
 
 <div class="row g-4">
@@ -25,10 +26,35 @@
                         <li><strong>Price:</strong> £@space.Price</li>
                     </ul>
 
-                    <a href="#" class="btn btn-primary">Book Now</a>
+                    @if (space.Reviews?.Any() == true)
+                    {
+                        <h6 class="mt-3">Reviews</h6>
+                        <ul class="list-unstyled">
+                            @foreach (var review in space.Reviews)
+                            {
+                                <li class="mb-2">
+                                    @review.ReviewText
+                                    <span style="color: #F5B301; margin-left: 5px;">
+                                        @for (int i = 0; i < review.ReviewScore; i++)
+                                        {
+                                            @:★
+                                        }
+                                    </span>
+                                </li>
+                            }
+                        </ul>
+                    }
+                    else
+                    {
+                        <p class="text-muted">No reviews yet</p>
+                    }
+                    
+                    <a href="/Reviews/New?spaceId=@space.Id" class="btn btn-primary mt-3">
+                        Leave a Review
+                    </a>
+                    <a href="#" class="btn btn-primary mt-3">Book Now</a>
                 </div>
             </div>
         </div>
     }
 </div>
-

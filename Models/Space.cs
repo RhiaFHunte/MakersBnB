@@ -11,6 +11,7 @@ public class Space
     public int? Price {get; set;}
     public int? Bedrooms { get; set; }
     public string Rules { get; set; } = "";
+    public List<Review> Reviews { get; set; } = new List<Review>();
 
     // the constructor
     public Space(string name, string description, int price) {

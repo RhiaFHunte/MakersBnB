@@ -1,23 +1,36 @@
-<form action="/Spaces" method="post">
-    <fieldset>
-        <legend>List a space</legend>
-        <div>
-        <label>Name <input type="text" name="name" /></label>
+<div class="mx-auto" style="max-width: 500px;">
+    <h2>List a Space</h2>
+
+    <form action="/Spaces" method="post" class="mt-4">
+
+        <div class="mb-3">
+            <label for="name" class="form-label">Name</label>
+            <input id="name" type="text" name="name" class="form-control" />
         </div>
-        <div>
-        <label>Description <input type="text" name="description" /></label>
+
+        <div class="mb-3">
+            <label for="description" class="form-label">Description</label>
+            <input id="description" type="text" name="description" class="form-control" />
         </div>
-        <div>
-        <label>Bedrooms <input type="text" name="bedrooms" /></label>
+
+        <div class="mb-3">
+            <label for="bedrooms" class="form-label">Bedrooms</label>
+            <input id="bedrooms" type="text" name="bedrooms" class="form-control" />
         </div>
-        <div>
-        <div>
-        <label>Rules <input type="text" name="rules" /></label>
+
+        <div class="mb-3">
+            <label for="rules" class="form-label">Rules</label>
+            <input id="rules" type="text" name="rules" class="form-control" />
         </div>
-        <label>Price <input type="text" name="price" /></label>
+
+        <div class="mb-3">
+            <label for="price" class="form-label">Price</label>
+            <input id="price" type="text" name="price" class="form-control" />
         </div>
-        <div>
-        <input type="submit" value="Submit" class="submit" />
-        </div>
-    </fieldset>
-</form>
+
+        <button type="submit" class="btn btn-primary">Submit</button>
+
+    </form>
+ 
+</div>
+

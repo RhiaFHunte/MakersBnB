@@ -22,8 +22,9 @@ public class UsersController : Controller
     {
         _context.Users.Add(user);
         _context.SaveChanges();
-
-        return Redirect("/Spaces");
+        ViewBag.Message = "Account created"; 
+        return View("New");
+        // return Redirect("/Spaces");
     }
 
 }

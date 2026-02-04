@@ -4,15 +4,28 @@
 
 <h1>Sign Up</h1>
 
-<form method="post" action="/Users/Create">
-    <label for="Username">Username</label>
-    <input id="Username" type="text" name="Username" />
+<div class="mx-auto" style="max-width: 400px;">
+        @if (ViewBag.Message != null)
+    {
+        <p class="alert alert-success">@ViewBag.Message</p>
+    }
+    <form method="post" action="/Users/Create" class="mt-4">
 
-    <label for="Email">Email</label>
-    <input id="Email" type="email" name="Email" />
+        <div class="mb-3">
+            <label for="Username" class="form-label">Username</label>
+            <input id="Username" type="text" name="Username" class="form-control" />
+        </div>
 
-    <label for="Password">Password</label>
-    <input id="Password" type="password" name="Password" />
+        <div class="mb-3">
+            <label for="Email" class="form-label">Email</label>
+            <input id="Email" type="email" name="Email" class="form-control" />
+        </div>
 
-    <button type="submit">Create Account</button>
-</form>
+        <div class="mb-3">
+            <label for="Password" class="form-label">Password</label>
+            <input id="Password" type="password" name="Password" class="form-control" />
+        </div>
+
+        <button type="submit" class="btn btn-primary">Create Account</button>
+    </form>
+</div>

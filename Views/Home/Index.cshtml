@@ -1,0 +1,45 @@
+﻿@{
+    ViewData["Title"] = "Home Page";
+
+    var today = DateTime.Now;
+
+    // Simple holiday example for the exercise
+    string greeting = "Hello";
+        if (today.Hour >= 0 && today.Hour < 12) 
+        {
+            greeting = "Good Morning!";
+        } else if (today.Hour >= 12 && today.Hour < 18)
+        {
+            greeting = "Good Afternoon!";
+        } else if (today.Hour >= 6 && today.Hour <= 23) 
+        {
+            greeting = "Good Evening!";
+        }
+    }
+    
+<div class="text-center">
+    <h1 class="display-4">Welcome to MakersBnB!</h1>
+
+    <h3>@greeting</h3>
+    <br />
+
+    <div>
+        <h3>Recent Reviews</h3>
+        <ul>
+            @{  
+                foreach (Review review in ViewBag.Reviews)
+                {
+                    <li>@review.ReviewText
+                        <span style = "margin-left: 5px;">
+                        @for(int i = 0; i < review.ReviewScore; i ++) 
+                        {
+                            <span style = "color: #F5B301;">*</span>
+                        }
+                        </span>
+                    </li>
+                    
+                }
+            }
+        </ul>
+    </div>
+</div>

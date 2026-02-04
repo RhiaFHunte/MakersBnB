@@ -1,0 +1,22 @@
+@model List<MakersBnB.Models.Space>
+
+@{
+    ViewData["Title"] = "Spaces";
+}
+
+<h1>Spaces</h1>
+<p>This is the Spaces page.</p>
+
+<ul> 
+@foreach (var space in Model)
+{
+    <li>
+        <strong>@space.Name</strong><br />
+        @space.Description <br />
+        Bedrooms: @space.Bedrooms <br />
+        Rules: @space.Rules <br />
+        Price: £@space.Price <br />
+        <br />
+    </li>
+}
+</ul>

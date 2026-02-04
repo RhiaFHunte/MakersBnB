@@ -17,4 +17,13 @@ public class UsersController : Controller
     {
         return View();
     }
+    [HttpPost]
+    public IActionResult Create(User user)
+    {
+        _context.Users.Add(user);
+        _context.SaveChanges();
+
+        return Redirect("/Spaces");
+    }
+
 }

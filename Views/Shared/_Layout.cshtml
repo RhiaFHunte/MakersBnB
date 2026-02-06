@@ -28,9 +28,6 @@
                 <a class="nav-link text-dark" asp-area="" asp-controller="Spaces" asp-action="Index">Spaces</a>
             </li>
             <li class="nav-item">
-                <a class="nav-link text-dark" asp-area="" asp-controller="Users" asp-action="New">Sign Up</a>
-            </li>
-            <li class="nav-item">
                 <a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="Team">Team</a>
             </li>
             <li class="nav-item">
@@ -53,10 +50,12 @@
             }
             else
             {
-                <li class="nav-item ms-auto">
+                <li class="nav-item ms-auto d-flex">
                     <a class="nav-link text-dark" href="/Sessions/New">Sign In</a>
+                    <a class="nav-link text-dark" href="/Users/New">Sign Up</a>
                 </li>
             }
+
 
 
                     </ul>
@@ -71,7 +70,7 @@
 
     <footer class="border-top footer text-muted">
         <div class="container">
-            &copy; 2026 - MakersBnB - <a asp-area="" asp-controller="Home" asp-action="Privacy">Privacy</a>
+            &copy; 2026 - MakersBnB - Rhia Hamilton<a asp-area="" asp-controller="Home" asp-action="Privacy">Privacy</a>
         </div>
     </footer>
     <script src="~/lib/jquery/dist/jquery.min.js"></script>

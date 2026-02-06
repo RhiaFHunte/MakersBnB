@@ -27,26 +27,46 @@
     </div>
 
     <!-- Reviews Section -->
-    <div class="mx-auto" style="max-width: 600px;">
+    <div class="mx-auto" style="max-width: 800px;">
         <h3 class="mb-3 text-center">Recent Reviews</h3>
+<ul class="list-group">
+@foreach (Review review in ViewBag.Reviews)
+{
+<li class="list-group-item">
+    <div class="d-flex justify-content-between align-items-center">
 
-        <ul class="list-group">
-            @foreach (Review review in ViewBag.Reviews)
-            {
-                <li class="list-group-item d-flex justify-content-between align-items-start">
-                    <div>
-                        @review.ReviewText
-                    </div>
+        <div class="me-3">
+            <strong>@review.Space?.Name</strong>
+            <br />
+            @review.ReviewText
+            <br />
+            <small class="text-muted">
+                @review.Date.ToString("dd MMM yyyy")
+            </small>
+        </div>
 
-                    <span>
-                        @for (int i = 0; i < review.ReviewScore; i++)
-                        {
-                            <span style="color: #F5B301;">★</span>
-                        }
-                    </span>
-                </li>
-            }
-        </ul>
+        <div class="d-flex align-items-center gap-3" style="min-width: 200px; justify-content: flex-end;">
+            <div>
+                @for (int i = 0; i < review.ReviewScore; i++)
+                {
+                    <span style="color: #F5B301;">★</span>
+                }
+            </div>
+
+                <a href="/Spaces" class="btn btn-outline-primary btn-sm">
+                    View
+                
+            </a>
+        </div>
+
+    </div>
+</li>
+
+}
+</ul>
+
+
+
     </div>
 
 </div>

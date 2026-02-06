@@ -1,45 +1,51 @@
 using Microsoft.AspNetCore.Mvc;
 using MakersBnB.Models;
+using MakersBnB.ActionFilters;
 
 namespace MakersBnB.Controllers;
 
 public class SpacesController : Controller
 {
+    private readonly MakersBnBDbContext _db;
     private readonly ILogger<SpacesController> _logger;
-    private readonly MakersBnBDbContext _context = null!;
-    
-    public SpacesController(ILogger<SpacesController> logger, MakersBnBDbContext context)
+
+    public SpacesController(MakersBnBDbContext db, ILogger<SpacesController> logger)
     {
+        _db = db;
         _logger = logger;
-        _context = context;
     }
 
+    // GET /Spaces
     public IActionResult Index()
     {
-        var spaces = _context.Spaces.ToList();
-
-        foreach (var space in spaces)
-        {
-            space.Reviews = _context.Reviews
-                .Where(r => r.SpaceId == space.Id)
-                .ToList();
-        }
-
+        var spaces = _db.Spaces.ToList();
         return View(spaces);
     }
 
-
+    // GET /Spaces/New (protected)
+    [ServiceFilter(typeof(AuthenticationFilter))]
     public IActionResult New()
     {
         return View();
     }
 
-    [HttpPost]
-    [Route("/Spaces")]
-    public IActionResult Create(Space space)
+    // POST /Spaces (protected)
+    [ServiceFilter(typeof(AuthenticationFilter))]
+    [HttpPost("/Spaces")]
+
+    public IActionResult Create(string name, string description, int price, int bedrooms, string rules)
     {
-        _context.Spaces.Add(space);
-        _context.SaveChanges();
+        var space = new Space
+        {
+            Name = name,
+            Description = description,
+            Price = price,
+            Bedrooms = bedrooms,
+            Rules = rules
+        };
+
+        _db.Spaces.Add(space);
+        _db.SaveChanges();
 
         return RedirectToAction("Index");
     }

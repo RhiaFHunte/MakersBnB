@@ -1,6 +1,7 @@
 using Microsoft.AspNetCore.Mvc;
 using MakersBnB.Models;
 using MakersBnB.ActionFilters;
+using Microsoft.EntityFrameworkCore;
 
 namespace MakersBnB.Controllers;
 
@@ -18,9 +19,13 @@ public class SpacesController : Controller
     // GET /Spaces
     public IActionResult Index()
     {
-        var spaces = _db.Spaces.ToList();
+        var spaces = _db.Spaces
+            .Include(s => s.Reviews)
+            .ToList();
+
         return View(spaces);
     }
+
 
     // GET /Spaces/New (protected)
     [ServiceFilter(typeof(AuthenticationFilter))]
@@ -33,7 +38,7 @@ public class SpacesController : Controller
     [ServiceFilter(typeof(AuthenticationFilter))]
     [HttpPost("/Spaces")]
 
-    public IActionResult Create(string name, string description, int price, int bedrooms, string rules)
+    public IActionResult Create(string name, string description, int price, int bedrooms, string rules, string ImageUrl)
     {
         var space = new Space
         {
@@ -41,7 +46,8 @@ public class SpacesController : Controller
             Description = description,
             Price = price,
             Bedrooms = bedrooms,
-            Rules = rules
+            Rules = rules,
+            ImageUrl = ImageUrl
         };
 
         _db.Spaces.Add(space);

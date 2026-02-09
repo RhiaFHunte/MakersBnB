@@ -21,6 +21,12 @@
     {
         <div class="col-md-4">
             <div class="card h-100 shadow-sm">
+
+                @if (!string.IsNullOrEmpty(space.ImageUrl))
+                {
+                    <img src="@space.ImageUrl" class="card-img-top" alt="@space.Name" />
+                }
+
                 <div class="card-body">
                     <h5 class="card-title">@space.Name</h5>
                     <p class="card-text">@space.Description</p>

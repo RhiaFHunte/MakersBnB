@@ -12,13 +12,18 @@ public class Space
     public int? Bedrooms { get; set; }
     public string Rules { get; set; } = "";
     public List<Review> Reviews { get; set; } = new List<Review>();
+    public string? ImageUrl { get; set; }
+
 
     // the constructor
-    public Space(string name, string description, int price) {
-        this.Name = name;
-        this.Description = description;
-        this.Price = price;
+public Space(string name, string description, int price, string imageUrl)
+    {
+        Name = name;
+        Description = description;
+        Price = price;
+        ImageUrl = imageUrl;
     }
+
     // a zero argument constructor is required by Entity Framework
     public Space() {}
 }
